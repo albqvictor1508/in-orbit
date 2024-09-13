@@ -31,6 +31,22 @@ app.post('/goals', {
     });
 })
 
+app.post('/goal-completions', {
+    schema: {
+        body: z.object({
+                title: z.string(),
+                desiredWeeklyFrequency: z.number().int().min(1).max(7),
+            })
+    }
+},async (request) => {
+    const {title, desiredWeeklyFrequency} = request.body;
+
+    await createGoal({
+        title,
+        desiredWeeklyFrequency,
+    });
+})
+
 app.listen({
     port: 3333,  
 }).then(() => {
