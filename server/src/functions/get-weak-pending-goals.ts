@@ -43,7 +43,7 @@ export async function getWeekPendingGoals() {
     `.mapWith(Number),
   })
   .from(goalsCreatedUpToWeek)
-  .leftJoin(goalCompletionCounts, eq(goalCompletionCounts.goalID, goalsCreatedUpToWeek.id));
+  .leftJoin(goalCompletionCounts, eq(goalCompletionCounts.goalID, goalsCreatedUpToWeek.id)); 
 
   return { pendingGoals };
 }
