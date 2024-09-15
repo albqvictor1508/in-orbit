@@ -32,8 +32,6 @@ app
     console.log('to rodando na porta 3333')
   })
 
-console.log('ta pegando o typescriptoo')
-
 //createGoalSchema --> valida os dados enviados antes que os envie pro body, pois caso isso n seja feito, o tipo do body será 'unknow'
 
 //serializerCompiler, validatorCompiler e ZodTypeProvider servem para auxiliar na validação dos dados
