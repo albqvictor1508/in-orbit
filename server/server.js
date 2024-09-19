@@ -3,5 +3,5 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 app.listen(process.env.PORT, () => {
-    console.log('HTTP server running: http://localhost:3303');
+    console.log(`HTTP SERVER RUNNING: http://localhost:${process.env.PORT}`);
 })
