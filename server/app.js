@@ -1,6 +1,7 @@
 import './src/db/index';
 
 import express from 'express';
+import TokenRoutes from "./src/routes/TokenRoutes";
 import UserRoutes from './src/routes/UserRoutes';
 import homeRoutes from './src/routes/HomeRoutes';
 
@@ -17,8 +18,9 @@ class App {
     }
 
     routes() {
-        this.app.use('/', homeRoutes)
-        this.app.use('/user', UserRoutes);
+        this.app.use('/token', TokenRoutes);
+        this.app.use('/', homeRoutes);
+        this.app.use('/user', TokenRoutes, UserRoutes);
     }
 }
 
