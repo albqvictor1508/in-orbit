@@ -4,6 +4,7 @@ import express from 'express';
 import TokenRoutes from "./src/routes/TokenRoutes";
 import UserRoutes from './src/routes/UserRoutes';
 import homeRoutes from './src/routes/HomeRoutes';
+import AlunoRoutes from './src/routes/AlunoRoutes';
 
 class App {
     constructor() {
@@ -17,10 +18,11 @@ class App {
         this.app.use(express.urlencoded({extended: true}));
     }
 
-    routes() {
-        this.app.use('/token', TokenRoutes);
+    async routes() {
         this.app.use('/', homeRoutes);
-        this.app.use('/user', TokenRoutes, UserRoutes);
+        this.app.use('/token', TokenRoutes);
+        this.app.use('/user', UserRoutes);
+        this.app.use('/aluno', AlunoRoutes);
     }
 }
 

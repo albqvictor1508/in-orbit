@@ -1,10 +1,21 @@
+import { password } from "../config/database";
 import { User } from "../models/UserModel";
 
 class UserController {
     async store(req,res) {
         try {
-            const novoUser = await User.create(req.body)
-            return res.status(200).json(novoUser);
+            const novoUser = await User.create(req.body);
+            const {id,nome,email, password} = novoUser;
+
+            return res.status(200).json({
+                msg: "Successfully created!",
+                newUser: {
+                    id,
+                    nome,
+                    email,
+                    password
+                }
+            });
         } catch(e) {
             return res.status(400).json({
                 errors: e.errors.map(err => err.message)
@@ -14,7 +25,7 @@ class UserController {
 
     async index(req,res) {
         try {
-            const users = await User.findAll(); // SELECT * FROM users;
+            const users = await User.findAll({attributes: ['id', 'nome', 'email']});
             return res.status(200).json(users)
         } catch(e) {
             return res.status(400).json(null);
@@ -23,8 +34,14 @@ class UserController {
 
     async show(req,res) {
         try {
-            const findUser = await User.findByPk(req.params.id)
-            return res.status(200).json(findUser);
+            const findUser = await User.findByPk(req.params.id);
+
+            const {email, nome, id} = findUser;
+            return res.status(200).json({
+                id,
+                nome,
+                email
+            });
         } catch (e) {
             return res.status(400).json(null);
         }
@@ -32,13 +49,7 @@ class UserController {
 
     async update(req,res) { //junção do index com o show
         try {
-            if(!req.params.id) {
-                return res.status(400).json({
-                    errors: ['ID not seended.']
-                })
-            }
-
-            const user = await User.findByPk(req.params.id);
+            const user = await User.findByPk(req.userId);
 
             if(!user) {
                 return res.status(400).json({
@@ -47,9 +58,14 @@ class UserController {
             }
 
             const newData = await user.update(req.body);
+            const {id, nome, email} = newData;
             return res.json({
                 msg: "successfully updated!",
-                newUser: newData
+                newUser: {
+                    id,
+                    nome,
+                    email
+                }
             });
         } catch(e) {
             return res.status(400).json(null);
@@ -59,13 +75,7 @@ class UserController {
 
     async delete(req, res) {
         try {
-            if(!req.params.id) {
-                return res.status(400).json({
-                    errors: ['ID not seended.']
-                });
-            }
-
-            const user = await User.findByPk(req.params.id);
+            const user = await User.findByPk(req.userId);
 
             if(!user) {
                 return res.status(400).json({
@@ -73,10 +83,15 @@ class UserController {
                 })
             }
 
+            const {id, nome, email} = user;
             await user.destroy();
             return res.json({
                 msg: "successfully removed.",
-                removed: user
+                removed: {
+                    id,
+                    nome,
+                    email
+                }
             })
         } catch(e) {
             return res.status(400).json(null);
