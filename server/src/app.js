@@ -1,12 +1,12 @@
-import "./src/db/index";
+import "./db/index";
 import { resolve } from "node:path";
 
 import express from "express";
-import TokenRoutes from "./src/routes/TokenRoutes";
-import UserRoutes from "./src/routes/UserRoutes";
-import homeRoutes from "./src/routes/HomeRoutes";
-import AlunoRoutes from "./src/routes/AlunoRoutes";
-import PhotoRoutes from "./src/routes/PhotoRoutes";
+import TokenRoutes from "./routes/TokenRoutes";
+import UserRoutes from "./routes/UserRoutes";
+import homeRoutes from "./routes/HomeRoutes";
+import AlunoRoutes from "./routes/AlunoRoutes";
+import PhotoRoutes from "./routes/PhotoRoutes";
 
 class App {
 	constructor() {

@@ -3,11 +3,11 @@ comandos do GIT)
 
 # Comandos acessar VM
 
-eval $(ssh-agent)
+eval $(ssh-agent) -> receber agente
 
-ssh-add ~/.ssh/id_ed25519
+ssh-add ~/.ssh/id_ed25519 -> adiciona a chave SSH ao agente
 
-start ~/.ssh
+(start ~/.ssh -> abre o diretório) => só em caso de querer abrir a pasta, não é obrigatório
 
 ssh (IP do google cloud) --> quando ja tiver colocado esses comandos
 
