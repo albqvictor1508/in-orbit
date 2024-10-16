@@ -50,3 +50,5 @@ class App {
 }
 
 exports. default = new App().app;
+
+console.log(123);
