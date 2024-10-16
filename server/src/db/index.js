@@ -6,7 +6,6 @@ import { Photo } from "../models/PhotoModel";
 
 export const connection = new Sequelize(databaseConfig);
 const models = [Aluno, User, Photo];
-//console.log(connection.models);
 
 models.forEach((model) => {
 	model.init(connection);
