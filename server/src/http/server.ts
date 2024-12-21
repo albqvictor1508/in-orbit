@@ -7,10 +7,11 @@ import {
 import { createGoalRoute } from './routes/create-goal'
 import { getPendingGoalsRoute } from './routes/get-pending-goals'
 import { createCompletionRoute } from './routes/create-completion'
-import { getWeekSummaryRoute } from './routes/get-week-sumary'
+import { getWeekSummaryRoute } from './routes/get-week-summary'
 import fastifyCors from '@fastify/cors'
 
-const app = fastify().withTypeProvider<ZodTypeProvider>()
+const app = fastify().withTypeProvider<ZodTypeProvider>();
+
 
 app.setValidatorCompiler(validatorCompiler)
 app.setSerializerCompiler(serializerCompiler)
@@ -29,7 +30,7 @@ app
     port: 3333,
   })
   .then(() => {
-    console.log('to rodando na porta 3333')
+    console.log('http://localhost:3333')
   })
 
 //createGoalSchema --> valida os dados enviados antes que os envie pro body, pois caso isso n seja feito, o tipo do body será 'unknow'

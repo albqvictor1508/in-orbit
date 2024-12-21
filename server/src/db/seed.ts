@@ -23,7 +23,3 @@ async function seed() {
 seed().finally(() => {
     client.end();
 });
-
-//seed cria dados fictícios no banco de dados, pra melhorar os testes por exemplo ou pra enviar pra um amigo
-
-//tem q ser nessa sequência pq completions depende de um id dentro de goals,se tirar goals primeiro dá erro

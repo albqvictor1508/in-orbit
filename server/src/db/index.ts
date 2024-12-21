@@ -8,5 +8,3 @@ export const db = drizzle(client, {
   schema,
   logger: false,
 })
-
-//conectando a aplicação ao postgres
