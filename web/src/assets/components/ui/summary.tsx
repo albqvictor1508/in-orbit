@@ -99,11 +99,3 @@ export function Summary() {
     </div>
   )
 }
-
-//no começo do map é obrigatório que o primeiro elemento sendo retornado receba o atributo "key" e o valor deve ser um parâmetro único dentro daquela estrutura, nesse caso foi a 'data' pois esse parâmetro não vai ter diferentes valores dentro da mesma interação.
-
-//lucide-react --> lib de icones no react
-
-//Object.entries(data.goalsPerDay) --> vai retornar as chaves e os valores que tão dentro dessa chave (que também é um objeto).
-
-//no React, sempre tem que ser um map ao invés de um forEach, pois o forEach funciona como uma simples estrutura de repetição que não pode retornar nada
