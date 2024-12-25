@@ -9,3 +9,14 @@ services:
        - POSTGRES_USER=docker
        - POSTGRES_PASSWORD=docker
        - POSTGRES_DB=inorbit
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - '5000:5000'
+    environment:
+      DATABASE_URL: postgres://docker:docker@pg:5432/inorbit
+    depends_on:
+      - pg
