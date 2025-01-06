@@ -1,0 +1,42 @@
+name: pocket-js-server
+
+services:
+  pg:
+    image: bitnami/postgresql:13.16.0
+    ports:
+      - '5433:5432'
+    environment:
+       - POSTGRES_USER=docker
+       - POSTGRES_PASSWORD=docker
+       - POSTGRES_DB=inorbit
+    restart: always
+  
+  server:
+    build: ./server
+    ports:
+      - '3333:3333'
+    depends_on:
+      - pg
+    env_file:
+      - ./server/.env
+  
+  front:
+    build: ./front
+    ports:
+      - '3000:3000'
+    depends_on:
+      - server
+    volumes:
+      - front-volume:/var/www/html
+  
+  nginx:
+    build: ./nginx
+    ports:
+      - '80:80'
+    depends_on:
+      - front
+    volumes:
+      - front-volume:/var/www/html
+
+volumes:
+  front-volume:

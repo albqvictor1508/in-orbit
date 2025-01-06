@@ -1,13 +1,10 @@
-FROM node:18
+FROM node:20
 
-WORKDIR /app
-
-COPY package.json package-lock.json ./
-RUN npm install
-
+WORKDIR /server
 COPY . .
 
-ENV PORT=5000
-EXPOSE 5000
+RUN rm -rf node_modules
+RUN npm install
+RUN npm run build
 
-CMD ["npm", "run", "start"]
+CMD [ "node", "dist/http/server.js" ]
