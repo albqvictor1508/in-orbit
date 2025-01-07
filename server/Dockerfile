@@ -7,4 +7,4 @@ RUN rm -rf node_modules
 RUN npm install
 RUN npm run build
 
-CMD [ "node", "dist/http/server.js" ]
+CMD ["npm", "start"]

@@ -7,7 +7,7 @@
     "dev": "tsx watch --env-file .env src/http/server.ts",
     "seed": "tsx --env-file .env src/db/seed.ts",
     "build": "tsup src",
-    "start": "node dist/http/server.js"
+    "start": "node --env-file .env dist/http/server.js"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +23,7 @@
     "fastify-type-provider-zod": "^2.0.0",
     "postgres": "^3.4.4",
     "react-hook-form": "^7.53.0",
+    "tsup": "^8.3.5",
     "typescript": "^5.5.4",
     "zod": "^3.23.8"
   },
