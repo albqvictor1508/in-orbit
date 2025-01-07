@@ -7,7 +7,7 @@ import { Separator } from './separator'
 import { useQuery } from '@tanstack/react-query'
 import { getSummary } from '../../../http/get-summary'
 import dayjs from 'dayjs'
-import ptBR from 'dayjs/locale/pt-BR'
+import ptBR from 'dayjs/locale/pt-br'
 import { PendingGoals } from './pending-goals'
 
 dayjs.locale(ptBR)
@@ -68,12 +68,14 @@ export function Summary() {
         <h2 className="text-xl">Sua Semana</h2>
 
         {Object.entries(data.goalsPerDay).map(([data, metas]) => {
+          const month = dayjs(data).format("MMMM");
+          const monthDay = dayjs(data).format("D");
           const weekDay = dayjs(data).format('dddd')
           return (
             <div key={data} className="flex flex-col gap-4">
               <h3 className="font-medium capitalize">
                 {weekDay}{' '}
-                <span className="text-zinc-400 text-xs">(15 de setembro)</span>
+                <span className="text-zinc-400 text-xs">({monthDay} <span className='lowercase'>de</span> {month})</span>
               </h3>
 
               <ul className="flex flex-col gap-3">
@@ -95,7 +97,6 @@ export function Summary() {
           )
         })}
       </div>
-      <div className="flex flex-col gap-6">jkh</div>
     </div>
   )
 }

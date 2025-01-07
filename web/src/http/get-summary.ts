@@ -18,4 +18,4 @@ export async function getSummary(): Promise<SummaryResponse> {
   return data.summary
 }
 
-//função que faz o fetch da query do back-end, que recebe a formatação no tipo 'SummaryResponse' (obrigatório pelo typescript que um tipo seja passado) e envia esse fetch pro App para ser executado pela lib de fetch 'tanstack query';
+//função que faz o fetch da query do back-end, que recebe a formatação no tipo 'SummaryResponse' e envia esse fetch pro App para ser executado pela lib de fetch 'tanstack query';
